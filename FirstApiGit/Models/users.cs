@@ -7,7 +7,7 @@ namespace FoodReciepe.Models
 {
     public class users
     {
-        public string Email { get; set; }
-        public string Favarites { get; set; }
+        public string email { get; set; }
+        public string favorites { get; set; }
     }
 }
