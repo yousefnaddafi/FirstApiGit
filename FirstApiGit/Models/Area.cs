@@ -8,5 +8,5 @@ namespace FoodReciepe.Models
     public class Area
     {
         public string strArea { get; set; }
-    }
+    }fccg
 }
