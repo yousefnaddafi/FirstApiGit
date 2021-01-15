@@ -1,6 +1,5 @@
 ﻿using FoodReciepe.HttpServices;
 using FoodReciepe.Models;
-using FoodReciepe.Properties;
 using FoodReciepe.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
