@@ -118,7 +118,7 @@ namespace FoodReciepe.HttpServices
 
 
 
-            return new FoodsList() { foods = result.meals.Select(x => new foods() { food = x.strMeal, foodThumb = x.strMealThumb, id = x.idMeal}).ToList() };
+            return new FoodsList() { foods = result.meals.Select(z => new foods() { food = z.strMeal, foodThumb = z.strMealThumb, id = z.idMeal}).Take(2).ToList() };
 
         }
 
