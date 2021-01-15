@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace FoodReciepe.Models
 {
-    public class areaList
+    public class ing
     {
-        public List<object> Result { get; set; }
+        public string id { get; set; }
+        public string ingredient { get; set; }
+
     }
 }
