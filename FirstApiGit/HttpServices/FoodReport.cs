@@ -19,24 +19,65 @@ namespace FoodReciepe.HttpServices
             this.client.BaseAddress = new Uri(BaseAdress);
             this.client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
-        public Foods GetArea(string search)
+        public AreaCustom GetArea(int size)
         {
-            var httpResponse = client.GetAsync($"api/json/v1/1/filter.php?a={}").Result;
+            var httpResponse = client.GetAsync($"api/json/v1/1/list.php?a=list").Result;
             httpResponse.EnsureSuccessStatusCode();
             if (!httpResponse.IsSuccessStatusCode)
             {
                 return null;
             }
-            Foods result;
-            using (HttpContent content = httpResponse.Content)
+
+
+            HttpContent content = httpResponse.Content;
+                string stringContent = content.ReadAsStringAsync().Result;
+
+              var  result = JsonSerializer.Deserialize<areas>(stringContent);
+
+             
+
+                return new AreaCustom() { Result = result.meals.Take(size).ToList() };
+
+        }
+        public CategoryCustom GetCat(int size)
+        {
+            var httpResponse = client.GetAsync($"api/json/v1/1/list.php?c=list").Result;
+            httpResponse.EnsureSuccessStatusCode();
+            if (!httpResponse.IsSuccessStatusCode)
             {
-
-                string stringContent = content.ReadAsStringAsync()
-                                               .Result;
-
-                result = JsonSerializer.Deserialize<Foods>(stringContent);
+                return null;
             }
-            return result;
+
+
+            HttpContent content = httpResponse.Content;
+            string stringContent = content.ReadAsStringAsync().Result;
+
+            var result = JsonSerializer.Deserialize<categories>(stringContent);
+
+
+
+            return new CategoryCustom() { result = result.meals.Take(size).ToList() };
+
+        }
+        public IngCustom GetIng(int size)
+        {
+            var httpResponse = client.GetAsync($"api/json/v1/1/list.php?i=list").Result;
+            httpResponse.EnsureSuccessStatusCode();
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+
+            HttpContent content = httpResponse.Content;
+            string stringContent = content.ReadAsStringAsync().Result;
+
+            var result = JsonSerializer.Deserialize<ingredients>(stringContent);
+
+
+
+            return new IngCustom() { result = result.meals.Select(x => new OurIng() {id = x.idIngredient , ingredient = x.strIngredient }).Take(size).ToList() };
+
         }
 
     }

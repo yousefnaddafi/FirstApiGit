@@ -7,6 +7,11 @@ namespace FoodReciepe.Models
 {
     public class ingredients
     {
-        public List<ing> result {get; set;}
+        public List<ing> meals {get; set;}
     }
+    public class IngCustom
+    {
+        public List<OurIng> result { get; set; }
+    }
+
 }

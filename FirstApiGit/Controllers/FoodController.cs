@@ -27,9 +27,9 @@ namespace FoodReciepe.Controllers
         }
 
         [HttpGet]
-        public Foods GetArea([FromQuery] int size)
+        public AreaCustom GetArea([FromQuery] int size)
         {
-            return FoodReport.GetArea(size);
+            return foodReport.GetArea(size);
         }
        
 

@@ -7,7 +7,13 @@ namespace FoodReciepe.Models
 {
     public class areas
     {
-        public List<Area> result { get; set; }
+        public List<Area> meals { get; set; }
 
+    }
+
+
+    public class AreaCustom
+    {
+        public List<Area> Result { get; set; }
     }
 }
