@@ -7,6 +7,6 @@ namespace FoodReciepe.Models
 {
     public class FoodsList
     {
-        public List<foods> foods = new List<foods>();
+        public List<foods> foods { get; set; }
     }
 }
