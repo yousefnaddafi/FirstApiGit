@@ -1,4 +1,5 @@
 ﻿using FoodReciepe.HttpServices;
+using FoodReciepe.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,7 +21,7 @@ namespace FoodReciepe.Controllers {
         }
 
         [HttpGet]
-        public Foods GetArea([FromQuery] string size)
+        public Foods GetArea([FromQuery] int size)
         {
             return FoodReport.GetArea(size);
         }
