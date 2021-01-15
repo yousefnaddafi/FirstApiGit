@@ -20,7 +20,7 @@ namespace FoodReciepe.Controllers
             this.foodReport = foodReport;
         }
         [HttpGet]
-        public IngCustom GetByArea([FromQuery] int size)
+        public IngCustom GetByIng([FromQuery] int size)
         {
             return foodReport.GetIng(size);
         }
