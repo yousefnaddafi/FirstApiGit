@@ -20,12 +20,18 @@ namespace FoodReciepe.Controllers
         {
             this.foodReport = foodReport;
         }
+        [HttpPost ]
+        public string Post([FromQuery] string Email ,List<string> Favarite)
+        {
+            return Email;
+        }
 
         [HttpGet]
         public Foods GetArea([FromQuery] int size)
         {
             return FoodReport.GetArea(size);
         }
+       
 
     }
     }
