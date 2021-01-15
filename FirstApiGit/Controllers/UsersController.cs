@@ -1,5 +1,6 @@
 ﻿using FoodReciepe.HttpServices;
 using FoodReciepe.Models;
+using FoodReciepe.Properties;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,21 +16,26 @@ namespace FoodReciepe.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly FoodReport foodReport;
-        public UsersController(FoodReport foodReport)
+        public class TaskController : ControllerBase
         {
-            this.foodReport = foodReport;
-        }
-        [HttpPost ]
-        public string Register([FromQuery] string Email ,List<string> Favarite)
+            readonly UsersRepository repository;
+            public TaskController()
+            {
+                repository = new UsersRepository();
+            }
+            [HttpPost ]
+        public users Register([FromBody] users Users )
         {
-            return Email;
+                repository.Insert(Users);
+                return Users;
+                
         }
+           
+            }
 
-        
-       
 
 
-    }
+
+        }
     }
 

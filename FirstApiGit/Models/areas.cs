@@ -14,6 +14,6 @@ namespace FoodReciepe.Models
 
     public class AreaCustom
     {
-        public List<Area> Result { get; set; }
+        public List<Area> Body { get; set; }
     }
 }

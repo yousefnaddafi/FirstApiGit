@@ -12,13 +12,14 @@ namespace FoodReciepe.HttpServices
     {
         private readonly HttpClient client;
         private const string BaseAdress = "https://www.themealdb.com";
-        
+
         public FoodReport(HttpClient client)
         {
             this.client = client;
             this.client.BaseAddress = new Uri(BaseAdress);
             this.client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
+     
         public AreaCustom GetArea(int size)
         {
             var httpResponse = client.GetAsync($"api/json/v1/1/list.php?a=list").Result;
@@ -30,13 +31,13 @@ namespace FoodReciepe.HttpServices
 
 
             HttpContent content = httpResponse.Content;
-                string stringContent = content.ReadAsStringAsync().Result;
+            string stringContent = content.ReadAsStringAsync().Result;
 
-              var  result = JsonSerializer.Deserialize<areas>(stringContent);
+            var result = JsonSerializer.Deserialize<areas>(stringContent);
 
-             
 
-                return new AreaCustom() { Result = result.meals.Take(size).ToList() };
+
+            return new AreaCustom() { Body = result.meals.Take(size).ToList() };
 
         }
         public CategoryCustom GetCat(int size)
@@ -76,10 +77,10 @@ namespace FoodReciepe.HttpServices
 
 
 
-            return new IngCustom() { result = result.meals.Select(x => new OurIng() {id = x.idIngredient , ingredient = x.strIngredient }).Take(size).ToList() };
+            return new IngCustom() { result = result.meals.Select(x => new OurIng() { id = x.idIngredient, ingredient = x.strIngredient }).Take(size).ToList() };
 
         }
-        
+
         public FoodsList GetBFilter(SelectByFilter SBF)
         {
 
@@ -88,21 +89,21 @@ namespace FoodReciepe.HttpServices
             switch (SBF.Cat)
             {
                 case "ing":
-                     cat= "i";
+                    cat = "i";
                     break;
                 case "cat":
-                     cat="c";
+                    cat = "c";
                     break;
                 case "area":
-                     cat="a";
+                    cat = "a";
                     break;
                 default:
                     cat = "i";
                     break;
 
             }
-            
-            
+
+
             var httpResponse = client.GetAsync($"api/json/v1/1/filter.php?{cat}={SBF.Selected}").Result;
             httpResponse.EnsureSuccessStatusCode();
             if (!httpResponse.IsSuccessStatusCode)
@@ -118,7 +119,7 @@ namespace FoodReciepe.HttpServices
 
 
 
-            return new FoodsList() { foods = result.meals.Select(z => new foods() { food = z.strMeal, foodThumb = z.strMealThumb, id = z.idMeal}).Take(2).ToList() };
+            return new FoodsList() { foods = result.meals.Select(z => new foods() { food = z.strMeal, foodThumb = z.strMealThumb, id = z.idMeal }).Take(2).ToList() };
 
         }
 
@@ -145,3 +146,5 @@ namespace FoodReciepe.HttpServices
 
     }
 }
+
+  
