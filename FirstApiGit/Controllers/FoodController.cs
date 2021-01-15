@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FoodReciepe.HttpServices;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -6,14 +7,23 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FoodReciepe.Controllers { 
+namespace FoodReciepe.Controllers {
 
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class FoodController : ControllerBase
     {
-    public FoodController()
-    {
+        private readonly FoodReport foodReport;
+        public FoodController(FoodReport foodReport)
+        {
+            this.foodReport = foodReport;
+        }
+
+        [HttpGet]
+        public Foods GetArea([FromQuery] string size)
+        {
+            return FoodReport.GetArea(size);
+        }
 
     }
     }
