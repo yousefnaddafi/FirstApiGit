@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FoodReciepe.Properties
+namespace FoodReciepe.Repository
 {
-    public class UsersRepository:users
+    public class userRepo: users
     {
         static List<users> Users = new List<users>();
-        
-       
+
+
         public void Insert(users user)
         {
             var usera = new users();

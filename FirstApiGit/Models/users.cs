@@ -9,6 +9,6 @@ namespace FoodReciepe.Models
     {
         public string email { get; set; }
         public List<favarite>  favarites { get; set; }
-    }fg
+    }
     
 }
