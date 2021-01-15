@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace FoodReciepe.Models
 {
-    public class areas
+    public class categories
     {
-        public List<Area> result { get; set; }
-
+        public List<Category> result { get; set; }
     }
 }

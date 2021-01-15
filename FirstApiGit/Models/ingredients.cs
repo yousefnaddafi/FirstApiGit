@@ -7,6 +7,6 @@ namespace FoodReciepe.Models
 {
     public class ingredients
     {
-        public List<ing> Result{get; set;}
+        public List<ing> result {get; set;}
     }
 }
