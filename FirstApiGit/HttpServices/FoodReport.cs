@@ -122,5 +122,26 @@ namespace FoodReciepe.HttpServices
 
         }
 
+        public FoodList GetByID(int id)
+        {
+            var httpResponse = client.GetAsync($"api/json/v1/1/lookup.php?i={id}").Result;
+            httpResponse.EnsureSuccessStatusCode();
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+
+            HttpContent content = httpResponse.Content;
+            string stringContent = content.ReadAsStringAsync().Result;
+
+            var result = JsonSerializer.Deserialize<FoodsServer>(stringContent);
+
+
+
+            return new FoodList() { Result = result.meals.Select(y => new Food() { id = y.idMeal, title = y.strMeal, category = y.strCategory, area = y.strArea, instructions = y.strInstructions, mealThumb = y.strMealThumb }).ToList() };
+
+        }
+
     }
 }

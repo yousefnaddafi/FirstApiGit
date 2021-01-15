@@ -23,5 +23,10 @@ namespace FoodReciepe.Controllers
         {
             return foodReport.GetBFilter(FinalDetail);
         }
+        [HttpGet("{id}")]
+        public FoodList GetById(int id)
+        {
+            return foodReport.GetByID(id);
+        }
     }
 }
