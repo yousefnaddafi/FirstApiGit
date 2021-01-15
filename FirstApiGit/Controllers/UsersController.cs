@@ -13,24 +13,20 @@ namespace FoodReciepe.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class FoodController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly FoodReport foodReport;
-        public FoodController(FoodReport foodReport)
+        public UsersController(FoodReport foodReport)
         {
             this.foodReport = foodReport;
         }
         [HttpPost ]
-        public string Post([FromQuery] string Email ,List<string> Favarite)
+        public string Register([FromQuery] string Email ,List<string> Favarite)
         {
             return Email;
         }
 
-        [HttpGet]
-        public AreaCustom GetArea([FromQuery] int size)
-        {
-            return foodReport.GetArea(size);
-        }
+        
        
 
 
