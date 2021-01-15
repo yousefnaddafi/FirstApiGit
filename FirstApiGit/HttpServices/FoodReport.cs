@@ -17,7 +17,6 @@ namespace FoodReciepe.HttpServices
             this.Client.BaseAddress = new Uri(BaseAdress);
             this.Client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
-        public Food Get(string food);
-        Environm
+        
     }
 }
