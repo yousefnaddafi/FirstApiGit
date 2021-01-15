@@ -8,7 +8,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FoodReciepe.Controllers {
+namespace FoodReciepe.Controllers 
+{
 
     [Route("api")]
     [ApiController]
@@ -28,4 +29,4 @@ namespace FoodReciepe.Controllers {
 
     }
     }
-}
+
