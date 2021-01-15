@@ -79,6 +79,48 @@ namespace FoodReciepe.HttpServices
             return new IngCustom() { result = result.meals.Select(x => new OurIng() {id = x.idIngredient , ingredient = x.strIngredient }).Take(size).ToList() };
 
         }
+        
+        public FoodsList GetBFilter(SelectByFilter SBF)
+        {
+
+
+            string cat = "";
+            switch (SBF.Cat)
+            {
+                case "ing":
+                     cat= "i";
+                    break;
+                case "cat":
+                     cat="c";
+                    break;
+                case "area":
+                     cat="a";
+                    break;
+                default:
+                    cat = "i";
+                    break;
+
+            }
+            
+            
+            var httpResponse = client.GetAsync($"api/json/v1/1/filter.php?{cat}={SBF.Selected}").Result;
+            httpResponse.EnsureSuccessStatusCode();
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+
+            HttpContent content = httpResponse.Content;
+            string stringContent = content.ReadAsStringAsync().Result;
+
+            var result = JsonSerializer.Deserialize<Meals>(stringContent);
+
+
+
+            return new FoodsList() { foods = result.meals.Select(x => new foods() { food = x.strMeal, foodThumb = x.strMealThumb, id = x.idMeal}).ToList() };
+
+        }
 
     }
 }
