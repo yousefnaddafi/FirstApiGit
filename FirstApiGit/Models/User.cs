@@ -7,8 +7,8 @@ namespace FoodReciepe.Models
 {
     public class User
     {
-        public string Email { get; set; }
-        public List<string>  Favarites { get; set; }
+        public string email { get; set; }
+        public List<string>  favarites { get; set; }
     }
     
 }
