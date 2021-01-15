@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodReciepe.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -8,15 +9,34 @@ namespace FoodReciepe.HttpServices
 {
     public class FoodReport
     {
-        private readonly HttpClient Client;
+        private readonly HttpClient client;
         private const string BaseAdress = "https://www.themealdb.com";
         
         public FoodReport(HttpClient client)
         {
-            this.Client = client;
-            this.Client.BaseAddress = new Uri(BaseAdress);
-            this.Client.DefaultRequestHeaders.Add("Accept", "application/json");
+            this.client = client;
+            this.client.BaseAddress = new Uri(BaseAdress);
+            this.client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
-        
+        public Foods GetArea(string search)
+        {
+            var httpResponse = client.GetAsync($"").Result;
+            httpResponse.EnsureSuccessStatusCode();
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            MovieList result;
+            using (HttpContent content = httpResponse.Content)
+            {
+
+                string stringContent = content.ReadAsStringAsync()
+                                               .Result;
+
+                result = JsonSerializer.Deserialize<MovieList>(stringContent);
+            }
+            return result;
+        }
+
     }
 }
