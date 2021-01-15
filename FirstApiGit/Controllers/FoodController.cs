@@ -6,12 +6,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FoodReciepe.Controllers
-{//nikytya
+namespace FoodReciepe.Controllers { 
+
     [Route("api/[controller]")]
     [ApiController]
     public class FoodController : ControllerBase
     {
+    public FoodController()
+    {
 
+    }
     }
 }
