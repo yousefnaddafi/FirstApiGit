@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace FoodReciepe.Models
 {
-    public class Area
+    public class users
     {
-        public string strArea { get; set; }
+        public string email { get; set; }
+        public List<favarite>  favarites { get; set; }
     }
+    
 }

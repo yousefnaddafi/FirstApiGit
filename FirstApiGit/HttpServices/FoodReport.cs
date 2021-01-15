@@ -19,6 +19,7 @@ namespace FoodReciepe.HttpServices
             this.client.BaseAddress = new Uri(BaseAdress);
             this.client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
+     
         public AreaCustom GetArea(int size)
         {
             var httpResponse = client.GetAsync($"api/json/v1/1/list.php?a=list").Result;
@@ -36,7 +37,7 @@ namespace FoodReciepe.HttpServices
 
 
 
-            return new AreaCustom() { Result = result.meals.Take(size).ToList() };
+            return new AreaCustom() { Body = result.meals.Take(size).ToList() };
 
         }
         public CategoryCustom GetCat(int size)
