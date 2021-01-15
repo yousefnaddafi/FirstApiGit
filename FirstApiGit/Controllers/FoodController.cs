@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace FoodReciepe.Controllers 
 {
 
-    [Route("api")]
+    [Route("api/[controller]")]
     [ApiController]
     public class FoodController : ControllerBase
     {
@@ -26,6 +26,7 @@ namespace FoodReciepe.Controllers
         {
             return FoodReport.GetArea(size);
         }
+
 
     }
     }

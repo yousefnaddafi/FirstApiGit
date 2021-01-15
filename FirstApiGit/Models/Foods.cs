@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace FoodReciepe.Models
 {
-    public class Foods
+    public class Food
     {
         public string food { get; set; }
         public string foodThumb { get; set; }
         public string id { get; set; }
+        public string category { get; set; }
     }
 }

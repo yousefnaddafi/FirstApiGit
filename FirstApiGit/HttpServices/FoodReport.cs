@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FoodReciepe.HttpServices
@@ -20,20 +21,20 @@ namespace FoodReciepe.HttpServices
         }
         public Foods GetArea(string search)
         {
-            var httpResponse = client.GetAsync($"").Result;
+            var httpResponse = client.GetAsync($"api/json/v1/1/filter.php?a={}").Result;
             httpResponse.EnsureSuccessStatusCode();
             if (!httpResponse.IsSuccessStatusCode)
             {
                 return null;
             }
-            MovieList result;
+            Foods result;
             using (HttpContent content = httpResponse.Content)
             {
 
                 string stringContent = content.ReadAsStringAsync()
                                                .Result;
 
-                result = JsonSerializer.Deserialize<MovieList>(stringContent);
+                result = JsonSerializer.Deserialize<Foods>(stringContent);
             }
             return result;
         }
