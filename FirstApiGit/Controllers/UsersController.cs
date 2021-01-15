@@ -1,6 +1,7 @@
 ﻿using FoodReciepe.HttpServices;
 using FoodReciepe.Models;
 using FoodReciepe.Properties;
+using FoodReciepe.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,10 +19,10 @@ namespace FoodReciepe.Controllers
     {
         public class TaskController : ControllerBase
         {
-            readonly UsersRepository repository;
+            readonly userRepo repository;
             public TaskController()
             {
-                repository = new UsersRepository();
+                repository = new userRepo();
             }
             [HttpPost ]
         public users Register([FromBody] users Users )
