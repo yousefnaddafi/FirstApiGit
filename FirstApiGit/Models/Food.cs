@@ -7,5 +7,6 @@ namespace FoodReciepe.Models
 {
     public class Food
     {
+        //aaa
     }
 }
