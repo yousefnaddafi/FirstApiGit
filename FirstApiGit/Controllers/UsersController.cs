@@ -16,6 +16,8 @@ namespace FoodReciepe.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        
+        //need some changes
         public class TaskController : ControllerBase
         {
             readonly userRepo repository;
@@ -25,6 +27,7 @@ namespace FoodReciepe.Controllers
             }
             [HttpPost ]
         public users Register([FromBody] users Users )
+                
         {
                 repository.Insert(Users);
                 return Users;
